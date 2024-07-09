@@ -138,7 +138,6 @@ def load_dataset(dataset_path,Target_size =(224, 224),Color_mode = 'rgb',Class_m
   return train_images, val_images, test_images
 
 def Data_visualization(generator):
-# Lấy toàn bộ dữ liệu và tính số lượng mẫu theo nhãn
   num_images = len(generator.filenames)
   labels = np.zeros((num_images,))
   for i in range(num_images // generator.batch_size + 1):
@@ -147,10 +146,8 @@ def Data_visualization(generator):
     end_idx = start_idx + batch_images.shape[0]
     labels[start_idx:end_idx] = np.argmax(batch_labels, axis=1)  # Lấy chỉ số lớp có giá trị lớn nhất
 
-  # Đếm số lượng mẫu cho từng nhãn
   unique_labels, label_counts = np.unique(labels, return_counts=True)
 
-  # Trực quan hóa dữ liệu
   plt.figure(figsize=(10, 6))
   plt.bar(unique_labels, label_counts, color='skyblue')
   plt.xlabel('label')
@@ -158,5 +155,16 @@ def Data_visualization(generator):
   plt.title('Data visualization')
   plt.xticks(unique_labels)
   plt.show()
+  
+def Data_info(generator):
+    print(f"Class indices: {generator.class_indices}")  # List of class names and their corresponding indices
+    print(f"Image shape: {generator.image_shape}")  # Dimensions of each image returned by the generator
+    print(f"Batch size: {generator.batch_size}")  # Number of images in each batch returned by the generator
+    print(f"Total samples: {generator.samples}")  # Total number of images in the dataset
+    print(f"Seed: {generator.seed}")  # Seed value used to generate random data
+    print(f"Class mode: {generator.class_mode}")  # Mode of the class such as 'categorical', 'binary', 'input', ...
+    print(f"Shuffle: {generator.shuffle}")  # Whether to shuffle the data after each epoch or not
+    print(f"Target size: {generator.target_size}")  # Input image size for your model
+    print(f"Color mode: {generator.color_mode}")  # Color mode of the images ('grayscale' or 'rgb')
 
   
