@@ -19,7 +19,7 @@ def list_of_dataset():
     "Garbage_classification_2",
     "garbage_classification_3",
     "Garbage_classification_dataset",
-    "Garbage_classification_enhanced",
+    "garbage_classification_enhanced",
     "garbage_dataset",
     "garbage1_dataset",
     "trash_dataset",
