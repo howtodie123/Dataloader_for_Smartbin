@@ -42,10 +42,11 @@ def download_and_extract_zips(selected_datasets, download_dir='/content/Dataset'
         full_url = url + dataset + '.zip'
         
        
-        zip_path = os.path.join(download_dir, dataset + '.zip')
-        
+        # zip_path = os.path.join(download_dir, dataset + '.zip')
+        zip_path = dataset + '.zip'
       
-        archive = tf.keras.utils.get_file(fname=zip_path, origin=full_url, extract=False)
+        # archive = tf.keras.utils.get_file(fname=zip_path, origin=full_url, extract=False)
+        archive = tf.keras.utils.get_file(fname=zip_path, cache_dir=download_dir, origin=full_url , extract=False)
         if extract_dir:
             extract_path = os.path.join(extract_dir, dataset)
         else:
