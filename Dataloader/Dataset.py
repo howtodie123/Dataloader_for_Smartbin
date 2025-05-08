@@ -88,12 +88,10 @@ def load_dataset(dataset_path,Target_size =(224, 224),Color_mode = 'rgb',Class_m
   image_df = pd.concat([filepaths, labels], axis=1)
 
   train_generator = ImageDataGenerator(
-    preprocessing_function=tf.keras.applications.resnet.preprocess_input,
     validation_split=0.2
   )
 
   test_generator = ImageDataGenerator(
-    preprocessing_function=tf.keras.applications.resnet.preprocess_input
   )
 
   train_df, test_df = train_test_split(image_df, test_size=0.2, shuffle=True, random_state=42)
